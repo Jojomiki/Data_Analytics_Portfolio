@@ -20,6 +20,24 @@ Key capabilities:
 • aggregated weather analysis  
 • analytical summaries for decision support  
 
+Project folder: weather-event-planning-analytics
+
+### SQL Rental Business Analysis
+
+PostgreSQL project that analyzes rental store performance using the DVD rental dataset.
+This analysis investigates revenue performance, pricing strategies, and rental behavior across film genres and store locations.
+
+Key capabilities:
+- complex SQL joins across multiple tables
+- business reporting queries
+- revenue and rental trend analysis
+- user-defined SQL functions for data transformation
+- triggers to automatically update summary tables
+- stored procedures for refreshing reporting datasets
+
+Project folder: sql-rental-business-analysis
+
+
 More projects will be added soon.
 
 ---
