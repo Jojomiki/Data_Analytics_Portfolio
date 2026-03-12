@@ -1,57 +1,110 @@
-# D493 JGN1 Task 1: Weather Prediction Python Application
-# Josie Mikita
-### Student ID: 012153910
+# Weather Event Planning Analytics Tool
 
-## Project Goal
-This application was built to simulate a typical data analyst task: retrieving, processing, storing, and reporting on historical climate data for a specific event location. I used Python, an external Weather API, and SQLAlchemy to manage a local SQLite database.
-The location featured in this application is Raymond, WA on Christmas day (December 25), but it can be customized to any location and desired data.
+## Overview
+
+This project analyzes historical weather patterns to support planning decisions for outdoor events.
+
+The application retrieves historical weather data from the Open-Meteo API, aggregates five years of observations for a specific event date, and stores the results in a SQLite database for reporting and analysis.
+
+The system demonstrates a complete analytics workflow, including:
+
+- Data extraction from an external API
+- Statistical aggregation of weather metrics
+- Database storage using SQLAlchemy ORM
+- Reporting through structured queries
 
 ---
 
-### Setup and Dependencies
+## Business Problem
 
-#### 1. Requirements File (Required for Competence - E)
-Before running the main program or tests, please ensure all dependencies are installed from the `requirements.txt` file.
+Outdoor event planners must anticipate weather risks when planning infrastructure such as tents, heating, cooling systems, and safety equipment.
 
-**Command:**
-```bash
+However, historical weather insights are often difficult to access quickly.
+
+This tool provides a lightweight analytics workflow that retrieves historical weather data and summarizes expected conditions for a given event date.
+
+Example planning questions include:
+
+- What temperatures are typical for this date?
+- What is the historical precipitation risk?
+- What wind conditions might affect outdoor equipment?
+
+---
+
+## Data Source
+
+Weather data is retrieved from the **Open-Meteo Archive API**.
+
+Data collected includes:
+
+- Temperature (mean, min, max)
+- Wind speed
+- Precipitation totals
+
+The program collects data for the same event date over the **past five years**.
+
+---
+
+## Methodology
+
+The system implements a simplified **ETL pipeline**:
+
+### Extract
+Historical weather data is retrieved via HTTP requests to the Open-Meteo API.
+
+### Transform
+Daily weather values are aggregated into summary statistics, including averages, minimums, maximums, and totals.
+
+### Load
+Aggregated results are stored in a SQLite database using SQLAlchemy ORM models.
+
+### Analyze
+The database is queried to generate a formatted event planning report.
+
+---
+
+## Example Analysis
+
+For the event date **December 25 (Christmas)** in **Raymond, Washington**, the system calculates:
+
+- Five-year average temperature
+- Minimum and maximum temperature
+- Wind speed trends
+- Total precipitation across five years
+
+These metrics help planners anticipate infrastructure needs such as heating, shelter, and weather protection.
+
+---
+
+## Technologies Used
+
+- Python
+- SQLAlchemy
+- SQLite
+- Requests
+- REST APIs
+- Unit Testing (unittest)
+
+---
+
+## How to Run the Project
+
+Clone the repository:
+
+```
+git clone https://github.com/Jojomiki/Data_Analytics_Portfolio.git
+```
+
+Install dependencies:
+
+```
 pip install -r requirements.txt
 ```
 
+Run the program:
 
-#### 2. Technical Dependencies (Comprehensive Module List)
-This project relies on the following modules:
-
-* **External Packages (Installed via pip):** requests, SQLAlchemy
-* **Standard Python Libraries (Built-in):** datetime, collections, statistics, sys, unittest
-
----
-
-### Running the Application and Tests
-
-#### 1. Program Command (C3, C5, C6)
-The program runs automatically using hardcoded inputs for Raymond, WA. No user interaction is required.
-
-Command to Run Program:
-
-```bash
+```
 python main.py
 ```
 
-### III. Output Description (C6)
-
-### III. Final Event Planning Data Report (C6)
-
-The formatted report printed to the console (required for the Screenshot C6 submission) is the **final analysis** delivered to the event planning team. It provides a quick, consolidated view of the most critical historical weather risks, directly retrieved from the database.
-
-| Category | Variables Retrieved (C1 & C6 Fields) |
-| :--- | :--- |
-| **Inputs** | Location Coordinates, Event Date (12/25) |
-| **Temperature** | 5-year Average, Minimum, and Maximum Temperature in Fahrenheit |
-| **Wind Speed** | 5-year Average, Minimum, and Maximum Wind Speed (MPH) |
-| **Precipitation** | 5-year Total Sum, Minimum Daily, and Maximum Daily Precipitation (Inches) |
-
-
-
-
-
+The program will retrieve historical weather data, calculate aggregated metrics, store them in a SQLite database, and generate a report for event planning analysis.
