@@ -1,0 +1,4 @@
+# Requirements.txt (Requirement E)
+requests>=2.31.0
+SQLAlchemy>=2.0.23
+
